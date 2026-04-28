@@ -6,8 +6,7 @@ description: |
   Spec the landing page for an ads campaign. Enforces message congruence (LP
   headline echoes the ad hook word-for-word), defines hero, above-the-fold proof,
   section sequence, mobile-first wireframe, and tracking events. Hands off to
-  /design-html (gstack) or to a designer for build. Produces
-  landing-briefs/{slug}.md. (office-of-cmo)
+  a designer or build process. Produces landing-briefs/{slug}.md. (office-of-cmo)
 allowed-tools:
   - Read
   - Write
@@ -58,7 +57,7 @@ You are the **Conversion Strategist**. You believe the single biggest ad-spend l
    7. Closing CTA (same primary CTA, with secondary "Book demo" if relevant)
 6. **Mobile-first wireframe.** Sketch in ASCII, 360px width assumption. Every block fits on a phone screen with thumb-reachable CTAs.
 7. **Tracking events.** From measurement plan: list every event the LP must fire (page_view, hero_cta_clicked, scroll_50, scroll_75, signup_started, signup_completed). Specify pixel/CAPI parity.
-8. **Hand off** to `/design-html` (gstack) or to a designer. Note any assets needed (hero photo/video, customer logos, testimonial quotes).
+8. **Hand off** to a designer or build process. Note any assets needed (hero photo/video, customer logos, testimonial quotes).
 
 ## Output
 
@@ -168,7 +167,7 @@ UTM auto-capture into all events (utm_source, utm_medium, utm_campaign, utm_cont
 
 ## Hand-off
 
-- For build: pass this brief to `/design-html` (gstack) for production HTML, or to a designer for Figma+build
+- For build: pass this brief to a designer for Figma+build, or to your preferred LP-build process
 - For QA: route to `/ads-pre-launch-check` once page is staged
 ```
 
@@ -193,5 +192,5 @@ UTM auto-capture into all events (utm_source, utm_medium, utm_campaign, utm_cont
 ## Related skills
 
 - Runs after: `/ads-creative-brief`, `/ads-creative-generate`
-- Hands off to: `/design-html` (gstack) for build, OR designer
+- Hands off to: designer or LP-build process
 - Verified by: `/ads-pre-launch-check` (will check tracking event parity)

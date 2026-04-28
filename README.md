@@ -4,7 +4,7 @@
 
 Office of CMO is a skill pack for [Claude Code](https://docs.claude.com/en/docs/claude-code) (and other AI coding agents) that gives you specialist marketers as slash commands — a CMO, a VP of Performance Marketing, a Creative Director, an Analytics Lead, and more — composed into a clean **Strategy → Plan → Create → Launch → Measure → Optimize → Reflect** sprint.
 
-It is to marketing what [gstack](https://github.com/garrytan/gstack) is to engineering: a workflow, not a toolbox. Each skill is sharp, role-shaped, and writes a hand-off artifact the next phase reads automatically.
+Inspired by [gstack](https://github.com/garrytan/gstack). Each skill is sharp, role-shaped, and writes a hand-off artifact the next phase reads automatically.
 
 ## Status
 
@@ -71,6 +71,6 @@ See [`ETHOS.md`](ETHOS.md). Short version: most marketing software optimizes for
 | 9 | Sales Alignment & RevOps | Planned |
 | 10 | Pricing & Packaging | Planned |
 
-## Credits
+## License
 
-Inspired by [gstack](https://github.com/garrytan/gstack) (workflow architecture, role naming, install pattern) and [marketingskills](https://github.com/coreyhaines31/marketingskills) (domain content, framework references). MIT-licensed.
+MIT.

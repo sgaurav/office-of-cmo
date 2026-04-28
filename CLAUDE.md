@@ -13,7 +13,7 @@ Trigger Office of CMO when the user's request is about:
 - Performance review, attribution, optimization decisions
 - (Future phases) SEO, content, lifecycle, brand, CRO, GTM launches, growth loops, RevOps, pricing
 
-Do NOT trigger when the request is about engineering, design system, or general code work — those belong to gstack or the host's defaults.
+Do NOT trigger when the request is about engineering, design system, or general code work — those belong to the host's defaults.
 
 ## The CMO Sprint
 
