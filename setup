@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# Office of CMO installer.
+# Auto-detects host (Claude Code, Codex, Cursor) and places skill files where the host expects.
+# Usage: ./setup [--host <name>] [--prefix] [--no-prefix] [--team]
+
+set -euo pipefail
+
+REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
+HOST=""
+PREFIX="false"     # default: no prefix → /ads-strategy (not /ocmo-ads-strategy)
+TEAM_MODE="false"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --host) HOST="$2"; shift 2;;
+    --prefix) PREFIX="true"; shift;;
+    --no-prefix) PREFIX="false"; shift;;
+    --team) TEAM_MODE="true"; shift;;
+    -h|--help)
+      cat <<EOF
+Office of CMO installer.
+
+Usage: ./setup [--host <name>] [--prefix] [--no-prefix] [--team]
+
+Hosts: claude (default), codex, cursor
+Flags:
+  --prefix       Namespace skills as /ocmo-<name> (default: no prefix)
+  --no-prefix    Use bare names like /ads-strategy (default)
+  --team         Vendor skills into the project repo for team sharing
+EOF
+      exit 0
+      ;;
+    *) echo "unknown arg: $1" >&2; exit 1;;
+  esac
+done
+
+# Auto-detect host if not specified
+if [[ -z "${HOST}" ]]; then
+  if [[ -d "${HOME}/.claude" ]]; then
+    HOST="claude"
+  elif [[ -d "${HOME}/.codex" ]]; then
+    HOST="codex"
+  elif [[ -d "${HOME}/.cursor" ]]; then
+    HOST="cursor"
+  else
+    HOST="claude"
+    echo "warn: no host config dir found; defaulting to claude (~/.claude/)"
+  fi
+fi
+
+INSTALLER="${REPO_ROOT}/hosts/${HOST}/install.sh"
+if [[ ! -f "${INSTALLER}" ]]; then
+  echo "error: no installer for host '${HOST}'" >&2
+  exit 1
+fi
+
+export OCMO_REPO_ROOT="${REPO_ROOT}"
+export OCMO_PREFIX="${PREFIX}"
+export OCMO_TEAM_MODE="${TEAM_MODE}"
+
+echo "Installing Office of CMO for host: ${HOST} (prefix=${PREFIX}, team=${TEAM_MODE})"
+bash "${INSTALLER}"
+
+cat <<EOF
+
+Office of CMO installed.
+
+Next steps:
+  1. Open your project in ${HOST^}.
+  2. Add the Office of CMO section from CLAUDE.md to your project's CLAUDE.md
+     (or AGENTS.md for non-Claude hosts).
+  3. Try: /ads-strategy
+
+Docs:
+  - Workflow:  ${REPO_ROOT}/docs/WORKFLOW.md
+  - Roles:     ${REPO_ROOT}/docs/ROLES.md
+  - Artifacts: ${REPO_ROOT}/docs/ARTIFACTS.md
+  - Ethos:     ${REPO_ROOT}/ETHOS.md
+EOF

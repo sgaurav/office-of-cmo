@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Pull the latest Office of CMO into the user's host install.
+set -euo pipefail
+
+CANDIDATES=(
+  "${HOME}/.claude/skills/office-of-cmo"
+  "${HOME}/.codex/skills/office-of-cmo"
+  "${HOME}/.cursor/skills/office-of-cmo"
+)
+
+for c in "${CANDIDATES[@]}"; do
+  if [[ -L "${c}" ]]; then
+    real="$(readlink "${c}")"
+    if [[ -d "${real}/.git" ]]; then
+      echo "Updating ${real}"
+      git -C "${real}" pull --ff-only
+    fi
+  elif [[ -d "${c}/.git" ]]; then
+    echo "Updating ${c}"
+    git -C "${c}" pull --ff-only
+  fi
+done
+
+echo "Done."

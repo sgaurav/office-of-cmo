@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Vendor Office of CMO into the current project repo so a team can share it.
+# Run from the repo root of the project that wants to use Office of CMO.
+set -euo pipefail
+
+if [[ ! -d ".git" ]]; then
+  echo "error: must be run from the root of a git repo" >&2
+  exit 1
+fi
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+TARGET="${REPO_ROOT}/.office-of-cmo"
+
+echo "Vendoring Office of CMO into ${TARGET}"
+git submodule add https://github.com/gauravsingh/office-of-cmo.git "${TARGET}" 2>/dev/null || \
+  git clone --depth 1 https://github.com/gauravsingh/office-of-cmo.git "${TARGET}"
+
+echo "Done. Add a section to your CLAUDE.md/AGENTS.md pointing to ${TARGET}/CLAUDE.md."

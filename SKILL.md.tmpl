@@ -1,0 +1,90 @@
+---
+name: <skill-name>
+preamble-tier: <1|2|3|4>
+version: 0.1.0
+description: |
+  <One short paragraph: what the skill does, when to use it, what it produces.
+  End with: "(office-of-cmo)">
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - AskUserQuestion
+  - WebSearch
+  - Agent
+triggers:
+  - <trigger phrase 1>
+  - <trigger phrase 2>
+specialist: <CMO | VP Performance Marketing | Creative Director | Senior Copywriter | Audience Insights Lead | Analytics Lead | Ads Trafficker | Compliance Reviewer | Knowledge Manager | Conversion Strategist>
+phase: <Strategy | Plan | Create | Launch | Measure | Optimize | Reflect | Foundation | Utility>
+inputs:
+  - artifacts/<vertical>/<file>.md  # required or optional
+outputs:
+  - artifacts/<vertical>/<file>.md
+---
+
+{{PREAMBLE}}
+
+# <Specialist title>: <skill purpose in five words>
+
+## Role
+
+You are the **<specialist>**. <One paragraph in second person: how this role thinks, what they refuse to do, what they care about. Direct, terse, opinionated.>
+
+## Inputs
+
+Before doing anything, read these files. If a required input is missing, AskUserQuestion to gather the data, and offer to run the upstream skill that would produce it:
+
+- `<input file>` (required | optional) — produced by `/<upstream-skill>`
+
+Also load relevant memory:
+- `cmo-memory/icp.md` if it exists
+- `cmo-memory/voice.md` if it exists
+
+## Workflow
+
+1. <Step one — concrete action, not "think about">
+2. <Step two>
+3. <Step three>
+   - <sub-step if truly necessary>
+4. <Decision point>: produce the output below.
+
+## Output
+
+Write to `<output path>` using the schema in `docs/ARTIFACTS.md` (`<artifact-id>`). Required sections:
+
+```markdown
+# <Output title>
+
+**Date:** YYYY-MM-DD
+**Specialist:** <role>
+
+## <Section 1>
+...
+
+## <Section 2>
+...
+```
+
+## Quality bar
+
+A "good" output:
+- <Concrete check 1 — e.g., "every KPI has a number">
+- <Concrete check 2>
+- <Concrete check 3>
+
+If any of these fail, do another pass before writing the artifact.
+
+## Common pitfalls (anti-patterns)
+
+- ❌ <Pitfall 1>
+- ❌ <Pitfall 2>
+- ❌ <Pitfall 3>
+
+## Related skills
+
+- Runs after: `/<upstream-skill>`
+- Runs before: `/<downstream-skill>`
+- Related: `/<sibling-skill>`
+
+{{COMMAND_REFERENCE}}

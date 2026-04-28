@@ -1,0 +1,27 @@
+# Office of CMO
+
+# Environment
+.env
+.env.local
+
+# Per-project artifact output (when used inside a consuming project, artifacts/
+# may be checked in; for this repo's own dogfood runs, we ignore.)
+/dogfood/artifacts/
+
+# Local memory state
+/cmo-memory/state/
+
+# Editor / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Bun / Node / Python tooling we don't use yet but might
+node_modules/
+bun.lock.local
+__pycache__/
+.venv/
