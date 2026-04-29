@@ -2,6 +2,44 @@
 
 All notable changes to Office of CMO are documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.0.0] — 2026-04-29 — `/digital` runs end-to-end
+
+The milestone release. `/copy` graduates from stub to full depth, completing the four roles required for `/digital` to run a complete paid acquisition program end-to-end without any stub gaps in the core workflow:
+
+```
+/cmo → /digital → /creative → /copy → /digital → /analyst → /digital → /cmo
+```
+
+The Senior Copywriter can now execute the full language layer of paid acquisition: hook variants across the 9-framework stack, ad copy across 8 channels to exact character limits, LP body copy with message-congruence enforcement, short-form email and 3-touch cold-outbound starters, voice calibration from existing material, banned-phrase enforcement on every variant, and copy A/B test design.
+
+### Changed
+
+- **`/copy`** — full persona; no longer a stub. Frontmatter `preamble-tier: 1`, `version: 1.0.0`, `status: stub` removed. Full pushback rules (11 explicit refusals). Six conversation shapes (hook generation, platform copy, LP body, voice calibration, cold outbound, "this isn't working" rewrite). Read-it-aloud test, specificity-over-abstraction discipline, character-limit precision baked in.
+
+### Added — `roles/copy/references/`
+
+- **`hook-frameworks.md`** — the 9-framework hook stack with examples (PAS, BAB, AIDA, Hook-Story-Offer, Status flip, Contrarian, Stat-led, Question-led, Direct benefit). Voice modifiers per framework. Anti-patterns (adjective stacks, "revolutionize", curiosity-gap-baits, made-up stats, hooks >12 words). Cross-framework voice-calibration check.
+- **`voice-calibration-guide.md`** — how to derive a voice signature from existing material. Six signals (pronoun use, sentence rhythm, vocabulary register, specificity, posture, what bad samples have that good ones don't). Confirmation handshake. Ongoing enforcement on every variant. Voice-evolution triggers. Worked example from Lattice Brief dogfood.
+- **`lp-body-copy-patterns.md`** — message congruence as the single biggest discipline. Hero block (5 elements). Section sequence below the hero. Above-fold proof types (one only, never all three). How-it-works section discipline. FAQ pattern. CTA copy by surface. Length discipline (400–800 words for paid LPs). Read-the-page-aloud test. Hand-off format to `/digital` and `/creative`.
+- **`email-copy-basics.md`** — single-email structure (6 elements), 3-touch cold-outbound sequence pattern, post-signup welcome, trial-ending nudge. Deliverability hygiene basics. What `/copy` will NOT do at v1.0.0 (multi-step nurture, branching flows, drip 30+ day campaigns).
+- **`banned-phrases-default.md`** — universal banned phrases regardless of `cmo-memory/voice.md`: 5 tiers covering universal corporate-jargon (leverage / synergy / etc.), cold-traffic context bans, cadence patterns ("5 things every founder should know"), B2B-specific bans, industry-specific bans (health / finance / SaaS / consumer apps). What's NOT banned (specific superlatives WITH substantiation; first-person assertions; numerical claims with sources).
+- **`copy-ab-test-design.md`** — what to test in priority order, sample size requirements per baseline CVR, three options when you don't have volume (A/B observe, leading-indicator tests, don't test yet), test-duration rules, hypothesis-up-front discipline, common bad test designs (the "8 variants" mistake, the "fishing trip" mistake, the "test forever" mistake, the "test everything at once" mistake).
+
+### Updated
+
+- `CLAUDE.md` — `/copy` listed as **In depth** in role registry
+- `docs/ROLES.md` — full Senior Copywriter persona summary
+- `docs/ROADMAP.md` — v1.0.0 declared as `/digital` end-to-end milestone; remaining stubs (`/content`, `/analyst`, `/ops`) moved to v1.x
+- `README.md` — v1.0.0 milestone declared; the end-to-end flow diagrammed; all four full roles listed
+- `.claude-plugin/plugin.json` — version 1.0.0
+- `VERSION` — 1.0.0
+
+### Why this is v1.0.0
+
+Office of CMO started as a task-shaped checklist generator (v0.1) and pivoted to a role-shaped team (v0.2). Every release since has been refining the discipline of the existing roles or adding the next role to depth. v1.0.0 is the first release where a user can run an entire paid acquisition program — strategy through retro, including the full creative production loop — without hitting a stub-shaped gap in the core flow. That's the milestone.
+
+The remaining stubs (`/content`, `/analyst`, `/ops`) handle their core scope and are honest about what they will and won't do. Future v1.x releases bring them to depth.
+
 ## [0.3.0] — 2026-04-29
 
 `/creative` graduates from stub to full depth. The Creative Director can now run real creative briefing, fan-out concepts across an angle, score against the rubric, ship to `/copy` and `/digital`, and refresh decaying creative without re-asking strategic questions.

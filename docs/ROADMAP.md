@@ -2,14 +2,26 @@
 
 What's shipped, what's stub, what's deferred.
 
-## v0.2 (current)
+## v1.0.0 (current) — `/digital` runs end-to-end
 
 **Roles in depth:**
-- `/cmo` — entry-point router + strategic owner
-- `/digital` — paid acquisition end-to-end, 8 channels covered
+- `/cmo` — entry-point router, strategic owner, retros, sunk-cost discipline
+- `/digital` — paid acquisition end-to-end across 8 channels
+- `/creative` — creative briefs, concept fan-out, scoring rubric, refresh briefs
+- `/copy` — ad copy across all channels, hook variants, LP body, email basics, voice calibration
 
-**Roles as stubs (handle core scope; full persona in v0.3):**
-- `/creative`, `/copy`, `/content`, `/analyst`, `/ops`
+**Roles as stubs (handle core scope; full persona in v1.x):**
+- `/content`, `/analyst`, `/ops`
+
+**The end-to-end paid program flow** (no stub gaps in core workflow):
+1. `/cmo` strategic frame
+2. `/digital` channel plan + brief skeleton + budget viability
+3. `/creative` concept fan-out + scoring + ship list
+4. `/copy` hook variants + platform copy + LP body
+5. `/digital` pre-launch QA + ad-set composition + ship
+6. `/analyst` failure-mode diagnostics + attribution audit
+7. `/digital` iterate (KILL / SCALE / REFRESH / HOLD per ad-set)
+8. `/cmo` retro + sunk-cost accounting + memory updates
 
 **Channels covered in `/digital` reference library:**
 - Google Ads (Search, PMax, YouTube, Display)
@@ -21,24 +33,25 @@ What's shipped, what's stub, what's deferred.
 - TikTok (incl. Spark Ads)
 - Bing / Microsoft Ads (incl. LinkedIn-targeting layer)
 
-**Disciplines covered:**
+**Cross-channel disciplines:**
 - Strategy frameworks (primary objective, channel theses, MER discipline)
-- Kill & scale criteria (per-channel defaults, refresh triggers, decision-grade thresholds)
+- Kill & scale criteria (per-channel defaults, refresh triggers, decision-grade thresholds, 5× directional rule)
+- Budget viability (daily-floor × test-length × campaign-count math; complexity-escalation exception)
+- Failure-mode diagnostics (CAC / Targeting / Creative / LP / Measurement; different decision rules per mode)
 - ABM (account tiering, channel stack, measurement)
 - CRO for paid traffic (message congruence, hero block, section sequence)
 - Retargeting & 1P data activation (post-iOS14)
+- Pushback discipline (forcing questions, two-probe rule + complexity-escalation exception, send-away-to-think with homework tracking, conflation pushback)
 
-## v0.3 — full personas for the rest of the team
+## v1.x — finish the team's stubs
 
-Bring the 5 stubs to depth:
+Bring the 3 remaining stubs to depth:
 
-- **`/creative`** — full creative-brief template tuned per channel; multi-angle creative platform planning; brand-system thinking; concept critique playbook with scoring rubrics
-- **`/copy`** — long-form sales page playbook; email sequence templates; brand voice calibration tool; cold-email and outbound copy
-- **`/content`** — full SEO audit playbook; topic-cluster architecture; programmatic SEO; AI search optimization; editorial calendar with KPI mapping
+- **`/content`** — full SEO audit playbook; topic-cluster architecture; programmatic SEO; AI search optimization; editorial calendar with KPI mapping; content brief template
 - **`/analyst`** — full attribution audit playbook; dashboard library; event taxonomy templates; holdout test design; MMM build guidance
 - **`/ops`** — CDP architecture playbook; lead-routing patterns (HubSpot + Salesforce); marketing automation flow library; server-side event router design; privacy compliance playbook
 
-## v0.3 — channels added to /digital
+## v1.x — channels added to /digital
 
 Pull from `roles/digital/TODO.md` based on user demand:
 
@@ -47,7 +60,7 @@ Pull from `roles/digital/TODO.md` based on user demand:
 - Programmatic display (DV360, Trade Desk) — for retargeting at scale
 - Bing audience network expansion
 
-## v0.4 — beyond ad campaigns
+## v2.0 — beyond ad campaigns
 
 Once ad-campaign-relevant roles are deep, extend to other marketing functions:
 
@@ -55,7 +68,7 @@ Once ad-campaign-relevant roles are deep, extend to other marketing functions:
 - **`/brand`** — Brand Marketer (positioning, narrative, brand voice, identity)
 - **`/product-marketer`** — Product Marketing Manager (positioning, launches, competitive intel, sales enablement)
 
-## v0.5+ — full marketing org
+## v2.x — full marketing org
 
 Deeper coverage:
 

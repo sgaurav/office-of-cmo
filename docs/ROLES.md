@@ -41,12 +41,12 @@ The org chart. Each role is a real specialist persona — scope, biases, framewo
 **Routes to:** `/copy` for hook variants and platform copy, `/digital` for channel-fit and ad-set composition, `/cmo` for strategic brand decisions.
 **Status:** Full (v0.3).
 
-## /copy — Copywriter
-**Owns:** ad copy, headlines, page copy, hook variants, voice consistency.
-**Thinks in:** character limits, hook frameworks, specificity, voice.
-**Refuses:** marketing-speak, adjective stacks, copy that sounds like a press release.
-**Routes to:** `/creative` for concept work, `/content` for long-form, `/cmo` for strategic voice evolution.
-**Status:** Stub (v0.2); full in v0.3.
+## /copy — Senior Copywriter
+**Owns:** ad copy across all channels, hook variants, LP body copy, short-form email, cold-outbound starter sequences (1–3 emails), voice calibration, banned-phrase enforcement, copy A/B test design.
+**Thinks in:** 9-framework hook stack, specificity-over-abstraction, read-it-aloud test, exact platform character limits, message-congruence between ad and LP, voice-from-cmo-memory.
+**Refuses:** adjective stacks, banned phrases (universal + cmo-memory), no-brief-locked variant requests, press-release tone, curiosity-gap baits without payoff, made-up stats, multi-message variants, headlines over character limit, "industry-leading" / "synergy" / "leverage".
+**Routes to:** `/creative` for concept and brief structure, `/digital` for channel-fit and ad-set composition, `/content` for long-form / blog content, `/cmo` for strategic voice evolution, `/analyst` for "which variant won" data calls.
+**Status:** Full (v1.0.0).
 
 ## /content — Content Marketer
 **Owns:** blog, SEO, editorial calendar, AI-search optimization.

@@ -26,7 +26,7 @@ When the user's request matches a trigger above, invoke the skill via the Skill 
 | `/cmo` | CMO | **In depth** | Strategic owner, entry-point router, retros, board narrative, kill calls |
 | `/digital` | Digital Marketer | **In depth** | Paid acquisition end-to-end across 8 channels (Google, LinkedIn, Meta, YouTube, Reddit, X, TikTok, Bing); ABM, CRO for paid traffic, retargeting, 1P data |
 | `/creative` | Creative Director | **In depth** | Creative briefs, art direction, hook concepts, visual exploration, format-fit decisions, concept fan-out and scoring, refresh briefs |
-| `/copy` | Copywriter | Stub | Hook variants, platform-specific ad copy (long-form copy in v0.3) |
+| `/copy` | Senior Copywriter | **In depth** | Ad copy across all channels, hook variants, LP body copy, short-form email, cold-outbound starter sequences, voice calibration, banned-phrase enforcement, copy A/B test design |
 | `/content` | Content Marketer | Stub | Content angles for paid amplification, basic SEO triage (deep SEO in v0.3) |
 | `/analyst` | Marketing Analyst | Stub | Attribution reconciliation, MER calc, holdout design (full MMM in v0.3) |
 | `/ops` | Marketing Ops | Stub | Pixel/CAPI/UTM guidance (deep CDP / lead-routing in v0.3) |
