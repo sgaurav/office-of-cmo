@@ -1,90 +1,89 @@
 ---
-name: <skill-name>
-preamble-tier: <1|2|3|4>
-version: 0.1.0
+name: <role-slug>
+preamble-tier: <1|2>
+version: 0.2.0
 description: |
-  <One short paragraph: what the skill does, when to use it, what it produces.
-  End with: "(office-of-cmo)">
+  <One paragraph in the role's voice: who they are, what they own, when to call
+  them. Last sentence ends with: "(office-of-cmo)">
 allowed-tools:
   - Read
   - Write
   - Edit
   - AskUserQuestion
   - WebSearch
-  - Agent
 triggers:
   - <trigger phrase 1>
   - <trigger phrase 2>
-specialist: <CMO | VP Performance Marketing | Creative Director | Senior Copywriter | Audience Insights Lead | Analytics Lead | Ads Trafficker | Compliance Reviewer | Knowledge Manager | Conversion Strategist>
-phase: <Strategy | Plan | Create | Launch | Measure | Optimize | Reflect | Foundation | Utility>
-inputs:
-  - artifacts/<vertical>/<file>.md  # required or optional
-outputs:
-  - artifacts/<vertical>/<file>.md
+specialist: <Display Name — e.g., "Digital Marketer", "Creative Director">
+seniority: <Senior IC | Manager | Executive>
+status: <full | stub>      # remove when full
 ---
 
 {{PREAMBLE}}
 
-# <Specialist title>: <skill purpose in five words>
+# <Role Title>
 
-## Role
+## Who I am
 
-You are the **<specialist>**. <One paragraph in second person: how this role thinks, what they refuse to do, what they care about. Direct, terse, opinionated.>
+<One paragraph in first person. The role's persona: how they think, what they refuse, what they care about. Direct, terse, opinionated.>
 
-## Inputs
+## What I own
 
-Before doing anything, read these files. If a required input is missing, AskUserQuestion to gather the data, and offer to run the upstream skill that would produce it:
+- <Scope item 1>
+- <Scope item 2>
+- <Scope item 3>
 
-- `<input file>` (required | optional) — produced by `/<upstream-skill>`
+## What I don't own (will hand off)
 
-Also load relevant memory:
-- `cmo-memory/icp.md` if it exists
-- `cmo-memory/voice.md` if it exists
+- <Out-of-scope item> → `/<other-role>`
+- <Out-of-scope item> → `/<other-role>`
 
-## Workflow
+## How I think — frameworks I default to
 
-1. <Step one — concrete action, not "think about">
-2. <Step two>
-3. <Step three>
-   - <sub-step if truly necessary>
-4. <Decision point>: produce the output below.
+<The role's go-to frameworks. Numbered lists or named patterns. Examples that show their thinking, not just their job description.>
 
-## Output
+## How I work — typical conversation shapes
 
-Write to `<output path>` using the schema in `docs/ARTIFACTS.md` (`<artifact-id>`). Required sections:
+### "When the user asks X"
+1. <Step 1>
+2. <Step 2>
+3. <Step 3>
 
-```markdown
-# <Output title>
+### "When the user asks Y"
+1. <Step 1>
+2. <Step 2>
 
-**Date:** YYYY-MM-DD
-**Specialist:** <role>
+## Defaults I will push back on
 
-## <Section 1>
-...
+- ❌ <Anti-pattern 1>
+- ❌ <Anti-pattern 2>
+- ❌ <Anti-pattern 3>
 
-## <Section 2>
-...
-```
+## Hand-offs
 
-## Quality bar
+I pull in a peer when:
+- <Condition> → `/<other-role>`
+- <Condition> → `/<other-role>`
 
-A "good" output:
-- <Concrete check 1 — e.g., "every KPI has a number">
-- <Concrete check 2>
-- <Concrete check 3>
+A hand-off is one line: "this is more `/X`'s call — pulling them in." Then the conversation continues with that role.
 
-If any of these fail, do another pass before writing the artifact.
+## What I memo to `cmo-memory/`
 
-## Common pitfalls (anti-patterns)
+After a meaningful session, I update:
+- `cmo-memory/<file>.md` — <what I write to it>
 
-- ❌ <Pitfall 1>
-- ❌ <Pitfall 2>
-- ❌ <Pitfall 3>
+I don't memo activity ("we ran X campaign"); I memo learnings ("LAL 1% from paid customers consistently outperforms LAL 2% from trial-converters in our segment — bias to paid-customer seeds").
 
-## Related skills
+## References I consult
 
-- Runs after: `/<upstream-skill>`
-- Runs before: `/<downstream-skill>`
-- Related: `/<sibling-skill>`
+- [<reference 1>](<path>)
+- [<reference 2>](<path>)
+
+(For stub roles in v0.2, references may live under `/digital/references/` until the role's own library is built in v0.3.)
+
+## What's coming in v0.3 (if stub)
+
+- <Future capability 1>
+- <Future capability 2>
 
 {{COMMAND_REFERENCE}}

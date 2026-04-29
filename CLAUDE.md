@@ -1,81 +1,61 @@
-# Office of CMO — Claude Code Routing
+# Office of CMO — Routing for Claude Code
 
-This repository ships a skill pack of slash commands for marketing leadership. When a user is in a project that uses Office of CMO, route their requests through the appropriate specialist skill listed below — do not improvise marketing advice when a matching skill exists.
+A small marketing org you can talk to. Each role is a real specialist persona with a scope of responsibility, frameworks they default to, and hand-off rules to peers.
 
-## When to use Office of CMO skills
+## Resolver
 
-Trigger Office of CMO when the user's request is about:
+Match the user's intent to the right role. When in doubt, invoke `/cmo` — they'll route verbally.
 
-- Paid advertising (Google, Meta, LinkedIn, TikTok, Reddit, X)
-- Marketing strategy, channel mix, budget allocation
-- Audience research, ICP, competitive intelligence
-- Creative briefs, ad copy, landing page briefs
-- Performance review, attribution, optimization decisions
-- (Future phases) SEO, content, lifecycle, brand, CRO, GTM launches, growth loops, RevOps, pricing
+| The user is asking about… | Invoke |
+|---|---|
+| Paid ads, Google Ads, Meta, LinkedIn, YouTube, TikTok, Reddit, X/Twitter, Bing/MS Ads, CAC, ROAS, retargeting, audience strategy, ABM, paid LP optimization | **`/digital`** |
+| Creative briefs, art direction, hook concepts, visual exploration, ad concepts, storyboards | **`/creative`** |
+| Headline copy, ad copy, page copy, hook variants, RSA copy, voice consistency | **`/copy`** |
+| Blog, SEO, editorial, content strategy, AI-search optimization, keyword research | **`/content`** |
+| Attribution, dashboards, GA4, MER, ROAS reconciliation, holdout / incrementality test design, reporting | **`/analyst`** |
+| Pixels, CAPI, server-side tracking, GTM, Segment, lead routing, marketing automation, tagging spec | **`/ops`** |
+| Quarterly strategy, channel mix at the program level, hiring, retros, board narrative, kill the program | **`/cmo`** |
+| Anything ambiguous ("our marketing isn't working", "what should we do this quarter") | **`/cmo`** (it routes verbally) |
 
-Do NOT trigger when the request is about engineering, design system, or general code work — those belong to the host's defaults.
+When the user's request matches a trigger above, invoke the skill via the Skill tool. The role's persona takes over — they ask clarifying questions, run the relevant frameworks, and write artifacts only when asked.
 
-## The CMO Sprint
+## Roles registered (v0.2)
 
-```
-Strategy → Plan → Create → Launch → Measure → Optimize → Reflect
-```
+| Slash | Role | Status | Scope |
+|---|---|---|---|
+| `/cmo` | CMO | **In depth** | Strategic owner, entry-point router, retros, board narrative, kill calls |
+| `/digital` | Digital Marketer | **In depth** | Paid acquisition end-to-end across 8 channels (Google, LinkedIn, Meta, YouTube, Reddit, X, TikTok, Bing); ABM, CRO for paid traffic, retargeting, 1P data |
+| `/creative` | Creative Director | Stub | Briefs, hook ideation, visual concept direction (deeper craft in v0.3) |
+| `/copy` | Copywriter | Stub | Hook variants, platform-specific ad copy (long-form copy in v0.3) |
+| `/content` | Content Marketer | Stub | Content angles for paid amplification, basic SEO triage (deep SEO in v0.3) |
+| `/analyst` | Marketing Analyst | Stub | Attribution reconciliation, MER calc, holdout design (full MMM in v0.3) |
+| `/ops` | Marketing Ops | Stub | Pixel/CAPI/UTM guidance (deep CDP / lead-routing in v0.3) |
+| `/cmo-memory` | Memory CRUD | Utility | Read/write/prune `cmo-memory/*.md` |
 
-Outputs from each phase are written to `artifacts/<vertical>/...` and consumed by the next phase. Always read prior artifacts before re-asking the user; the path map lives in [`docs/ARTIFACTS.md`](docs/ARTIFACTS.md).
+## Hand-off pattern
 
-## Phase 1 — Ads (available)
+Roles route to each other in single-line messages, e.g.:
 
-### Foundation (read first when relevant)
-- `/cmo-context` — global context: business type, stage, ICP, voice, platform access
-- `/cmo-memory` — CRUD for persistent CMO state (ICP, voice, winners, kill rules)
-- `/ads-context` — ads-specific glossary, artifact contract, platform matrix
+> **Digital Marketer**: "This is more `/copy`'s call beyond hooks — pulling them in."
 
-### Strategy phase
-- `/ads-strategy` — CMO sets objectives, KPIs, budget envelope, kill criteria
-- `/ads-audience-research` — Audience Insights Lead builds segments and message angles
-- `/ads-competitor-scan` — Competitive Intel scans ad libraries, identifies whitespace
+After the hand-off line, the next role takes over. The user doesn't need to invoke a new slash command; the role just continues.
 
-### Plan phase
-- `/ads-channel-plan` — VP Performance Marketing maps strategy to platforms
-- `/ads-budget-plan` — VP Performance Marketing allocates monthly budget with scale/kill rules
-- `/ads-measurement-plan` — Analytics Lead defines KPIs, conversions, UTMs, attribution
+## Cold-start
 
-### Create phase
-- `/ads-creative-brief` — Creative Director writes single-message campaign briefs
-- `/ads-creative-generate` — Senior Copywriter + Creative Director generate copy and visual concepts
-- `/ads-landing-brief` — Conversion Strategist specs the landing page, enforcing message congruence
-
-### Launch phase
-- `/ads-pre-launch-check` — Ads Trafficker runs the pre-flight GO/NO-GO checklist
-- `/ads-platform-setup` — Ads Trafficker walks through platform-specific setup
-
-### Measure phase
-- `/ads-performance-review` — Analytics Lead produces daily/weekly/monthly review docs
-- `/ads-attribution-audit` — Analytics Lead reconciles platform vs. truth conversions
-
-### Optimize phase
-- `/ads-iterate` — VP Performance Marketing classifies KILL / SCALE / REFRESH / HOLD per ad set
-
-### Reflect phase
-- `/ads-retro` — CMO runs program retro, updates `cmo-memory/`, appends to `playbook.md`
-
-### Utility
-- `/ads-compliance-check` — Compliance Reviewer scans for platform policy and claims violations
-
-## Routing rules for ambiguous requests
-
-- "What should I do about my ads?" → ask cadence (daily/weekly/monthly), then run `/ads-performance-review` followed by `/ads-iterate`.
-- "Help me launch a new campaign" → run the Create + Launch chain: `/ads-creative-brief` → `/ads-creative-generate` → `/ads-landing-brief` → `/ads-pre-launch-check`.
-- "We're starting from scratch" → start with `/ads-strategy`; the chain flows from there.
-- "I just want copy" → `/ads-creative-generate` (will demand a brief; offer to run `/ads-creative-brief` first).
+If a user opens with no clear intent or it's their first session, default to **`/cmo`**. The CMO runs an 8-question onboarding (writes to `cmo-memory/cmo-context.md`) and routes from there.
 
 ## Plan-mode behavior
 
-In plan-mode, Office of CMO skills produce *plans* (writes only to `artifacts/ads/.../*-plan.md` and to the plan file) without executing changes against external ad platforms. Live platform writes (paused campaign edits, budget changes via MCP) are deferred until plan-mode exits.
+In plan-mode, all roles produce *plans* (writes only to the plan file and `artifacts/` if asked) without executing changes against external systems (no live ad-platform writes via MCPs, no CRM updates, no DNS changes). Live changes are deferred until plan-mode exits.
 
 ## Don'ts
 
-- Don't synthesize a "blended" multi-skill response; pick the right skill and run it.
-- Don't fabricate metrics or benchmarks; say "we don't know" and route to `/ads-attribution-audit` or to `WebSearch`.
-- Don't strip the kill criteria section out of any plan to make the document shorter.
-- Don't generate raster images; produce prompts and storyboards for handoff to image/video tools.
+- Don't synthesize a "blended" multi-role response. Pick the right role and let them work; they'll route if needed.
+- Don't fabricate metrics or benchmarks. If you don't know, say so and route to `/analyst` or `WebSearch`.
+- Don't skip the kill criteria section in any strategy doc.
+- Don't generate raster images yourself; produce prompts and storyboards for handoff to image/video tools (Midjourney, Flux, Veo, Runway).
+- Don't claim a stub role can do the full version's work. Say what's available now and what's coming in v0.3.
+
+## When the user says "/cmo" (or anything matching CMO triggers)
+
+Invoke `/cmo`. Don't try to handle CMO-level questions outside the skill — the persona, memory access, and routing logic live there.

@@ -1,7 +1,7 @@
 {
   "name": "office-of-cmo",
-  "version": "0.1.0",
-  "description": "An opinionated stack for marketing leaders. Turn Claude Code into a virtual marketing team — CMO, VP Performance, Creative Director, Analytics Lead — composed into a Strategy → Plan → Create → Launch → Measure → Optimize → Reflect sprint.",
+  "version": "0.2.0",
+  "description": "A small marketing org you can talk to. CMO at the top, Digital Marketer running paid acquisition end-to-end, plus Creative, Copy, Content, Analyst, and Ops as collaborators. Inspired by gstack.",
   "homepage": "https://github.com/gauravsingh/office-of-cmo",
   "license": "MIT",
   "author": {
@@ -9,24 +9,13 @@
     "email": "gaurav@verloop.io"
   },
   "skills": [
-    "cmo-context",
     "cmo-memory",
-    "ads/ads-context",
-    "ads/ads-strategy",
-    "ads/ads-audience-research",
-    "ads/ads-competitor-scan",
-    "ads/ads-channel-plan",
-    "ads/ads-budget-plan",
-    "ads/ads-measurement-plan",
-    "ads/ads-creative-brief",
-    "ads/ads-creative-generate",
-    "ads/ads-landing-brief",
-    "ads/ads-pre-launch-check",
-    "ads/ads-platform-setup",
-    "ads/ads-performance-review",
-    "ads/ads-attribution-audit",
-    "ads/ads-iterate",
-    "ads/ads-retro",
-    "ads/ads-compliance-check"
+    "roles/cmo",
+    "roles/digital",
+    "roles/creative",
+    "roles/copy",
+    "roles/content",
+    "roles/analyst",
+    "roles/ops"
   ]
 }

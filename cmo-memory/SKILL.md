@@ -42,13 +42,13 @@ You are the **Knowledge Manager**. You curate `cmo-memory/` with discipline — 
 Memory layout:
 ```
 cmo-memory/
-├── cmo-context.md        # base business profile (written by /cmo-context)
+├── cmo-context.md        # base business profile (built by /cmo onboarding)
 ├── icp.md                # full ICP with segments
 ├── voice.md              # brand voice + banned + mandatories
 ├── winners.md            # creatives/angles/audiences that repeatedly outperform
 ├── kill-rules.md         # patterns we kill faster than the strategy doc would
 ├── compliance-notes.md   # platform-specific learnings ("Meta rejects X for our category")
-└── playbook.md           # validated patterns added by /ads-retro
+└── playbook.md           # validated patterns appended at /cmo retros
 ```
 
 ## Workflow
@@ -182,5 +182,5 @@ A "good" memory file:
 
 ## Related skills
 
-- Called by: `/cmo-context` (writes initial context), `/ads-retro` (writes winners + playbook + kill-rules), `/ads-audience-research` (writes icp.md), `/ads-performance-review` (writes winners.md when a creative graduates)
-- Runs alongside: any skill that needs to read prior context
+- Called by: `/cmo` (writes cmo-context.md during onboarding; writes winners + playbook + kill-rules during retros), `/digital` (writes icp.md from audience research; writes winners.md when a creative graduates; writes kill-rules.md when patterns repeat)
+- Read by: every role that needs prior context before answering

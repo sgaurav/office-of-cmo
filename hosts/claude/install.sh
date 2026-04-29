@@ -24,5 +24,5 @@ echo "Linked: ${TARGET} → ${OCMO_REPO_ROOT}"
 if [[ "${OCMO_PREFIX}" == "true" ]]; then
   echo "Prefix mode: skills exposed as /ocmo-<name>."
 else
-  echo "No-prefix mode: skills exposed bare, e.g. /ads-strategy."
+  echo "No-prefix mode: skills exposed bare, e.g. /cmo, /digital."
 fi

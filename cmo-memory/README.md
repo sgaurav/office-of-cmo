@@ -1,17 +1,17 @@
 # cmo-memory/
 
-Persistent state across Office of CMO sessions. Skills read from these files first; only ask the user when memory is missing or stale.
+Persistent state across Office of CMO sessions. Roles read from these files first; only ask the user when memory is missing or stale.
 
-| File | Owner skill | Purpose |
+| File | Primary writer | Purpose |
 |---|---|---|
-| `cmo-context.md` | `/cmo-context` | Base business profile |
-| `icp.md` | `/ads-audience-research` (writes), retros (refine) | Full ICP with segments |
-| `voice.md` | user-edited; retros refine | Brand voice + banned phrases + mandatories |
-| `winners.md` | `/ads-performance-review`, `/ads-retro` | Repeatedly outperforming creatives/angles/audiences |
-| `kill-rules.md` | `/ads-iterate`, `/ads-retro` | Hard-learned kill thresholds |
-| `compliance-notes.md` | `/ads-compliance-check`, retros | Platform-specific learnings |
-| `playbook.md` | `/ads-retro` | Validated patterns (≥2 retros confirm) |
+| `cmo-context.md` | `/cmo` (onboarding) | Base business profile |
+| `icp.md` | `/digital`, refined by `/cmo` retros | Full ICP with segments |
+| `voice.md` | user-edited; `/cmo` retros refine | Brand voice + banned phrases + mandatories |
+| `winners.md` | `/digital`, `/cmo` retros | Repeatedly outperforming creatives/angles/audiences |
+| `kill-rules.md` | `/digital`, `/cmo` retros | Hard-learned kill thresholds |
+| `compliance-notes.md` | `/digital`, `/analyst`, `/ops` | Platform-specific learnings |
+| `playbook.md` | `/cmo` retros | Validated patterns (≥2 retros confirm) |
 
-CRUD via `/cmo-memory`. Do not edit by hand if you can avoid it — skills assume the schemas in their `SKILL.md` files are intact.
+All roles can read; the writer column is who typically appends. CRUD via `/cmo-memory`. Do not edit by hand if you can avoid it — roles assume the schemas in `/cmo-memory`'s SKILL.md are intact.
 
 State files (large, ephemeral, generated) live under `cmo-memory/state/` and are gitignored.

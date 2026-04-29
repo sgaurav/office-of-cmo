@@ -1,45 +1,48 @@
 # Office of CMO
 
-> An opinionated stack for marketing leaders. Turn Claude Code into a virtual marketing team.
+> A small marketing org you can talk to. Inspired by [gstack](https://github.com/garrytan/gstack).
 
-Office of CMO is a skill pack for [Claude Code](https://docs.claude.com/en/docs/claude-code) (and other AI coding agents) that gives you specialist marketers as slash commands — a CMO, a VP of Performance Marketing, a Creative Director, an Analytics Lead, and more — composed into a clean **Strategy → Plan → Create → Launch → Measure → Optimize → Reflect** sprint.
-
-Inspired by [gstack](https://github.com/garrytan/gstack). Each skill is sharp, role-shaped, and writes a hand-off artifact the next phase reads automatically.
+Office of CMO is a skill pack for [Claude Code](https://docs.claude.com/en/docs/claude-code) (and other AI coding agents) that gives you a marketing team as slash commands — a CMO at the top, a Digital Marketer running paid acquisition end-to-end, plus Creative, Copy, Content, Analyst, and Ops as collaborators. Talk to any of them; they route to each other when needed, like real coworkers.
 
 ## Status
 
-**v0.1.0 — Phase 1: Ads.** The ads vertical is the first to ship end-to-end. Subsequent phases (Content/SEO, Lifecycle, Brand, CRO, Analytics, Launches, Growth, RevOps, Pricing) follow the same shape.
+**v0.2.0 — role-shaped redesign.** Two roles ship in depth (`/cmo` and `/digital`); the rest are stubs that handle their core scope and defer the deeper craft to v0.3. The whole team is wired into the routing layer so conversations flow even when only two roles are fully built.
 
-## The CMO Sprint
+## The team
 
-```
-Strategy → Plan → Create → Launch → Measure → Optimize → Reflect
-   CMO    Perf Lead  Creative   Trafficker  Analytics  Perf Lead   CMO
-```
+| Slash | Role | Depth |
+|---|---|---|
+| `/cmo` | CMO — strategic owner, entry-point router | **Full** |
+| `/digital` | Digital Marketer — paid acquisition end-to-end | **Full** |
+| `/creative` | Creative Director | Stub |
+| `/copy` | Copywriter | Stub |
+| `/content` | Content Marketer | Stub |
+| `/analyst` | Marketing Analyst | Stub |
+| `/ops` | Marketing Ops | Stub |
 
-Each phase is a slash command run by the right specialist. Outputs from one phase are the inputs to the next, persisted as Markdown artifacts under `artifacts/<vertical>/`.
+## How it works
 
-## Phase 1 Skills (Ads)
+Talk to a role; ask anything in their scope. If it's not their job, they route in one message:
 
-| Phase | Slash command | Specialist | Output |
-|---|---|---|---|
-| Foundation | `/cmo-context`, `/cmo-memory`, `/ads-context` | — | shared memory |
-| Strategy | `/ads-strategy` | CMO | `ads-strategy-doc.md` |
-| Strategy | `/ads-audience-research` | Audience Insights Lead | `audience-doc.md` |
-| Strategy | `/ads-competitor-scan` | Competitive Intel | `competitor-creative-report.md` |
-| Plan | `/ads-channel-plan` | VP Performance Marketing | `channel-plan.md` |
-| Plan | `/ads-budget-plan` | VP Performance Marketing | `budget-plan.md` |
-| Plan | `/ads-measurement-plan` | Analytics Lead | `measurement-plan.md`, `tagging-spec.md` |
-| Create | `/ads-creative-brief` | Creative Director | `creative-briefs/{slug}.md` |
-| Create | `/ads-creative-generate` | Senior Copywriter + Creative Director | `creative-decks/{slug}.md` |
-| Create | `/ads-landing-brief` | Conversion Strategist | `landing-briefs/{slug}.md` |
-| Launch | `/ads-pre-launch-check` | Ads Trafficker | `pre-launch-checks/{date}.md` |
-| Launch | `/ads-platform-setup` | Ads Trafficker | `platform-setup-log.md` |
-| Measure | `/ads-performance-review` | Analytics Lead | `reviews/{date}-{cadence}.md` |
-| Measure | `/ads-attribution-audit` | Analytics Lead | `attribution-audit-{month}.md` |
-| Optimize | `/ads-iterate` | VP Performance Marketing | `iterations/{date}.md` |
-| Reflect | `/ads-retro` | CMO | `retros/{period}.md` |
-| Utility | `/ads-compliance-check` | Compliance Reviewer | `compliance/{date}.md` |
+> **You**: "Our Meta CAC is creeping up; what should we do?"
+>
+> **Digital Marketer**: "Pulling the last 30 days. Looks like creative decay — frequency is at 4.1 on Concept A. I'll brief a refresh; pulling in `/creative` for new concepts and `/copy` for hook variants."
+
+Or talk to the CMO if you don't know who you need:
+
+> **You**: "Our marketing isn't working."
+>
+> **CMO**: "Two questions: (1) what does winning look like in numbers, (2) what's the primary objective this quarter? Once I know those, I'll either handle it or pull in the right specialist."
+
+## What `/digital` covers in depth (v0.2)
+
+The Digital Marketer is a senior paid-acquisition operator. They cover:
+
+**Channels (8):** Google Ads, LinkedIn, Meta, YouTube, Reddit, X (Twitter), TikTok, Bing/Microsoft Ads. Each has a deep playbook in `roles/digital/references/` covering when to use, audience strategy, account architecture, bidding, creative, kill criteria, and common mistakes.
+
+**Disciplines:** strategy and primary-objective discipline, audience and ICP shaping, ABM (Account-Based Marketing) for B2B, conversion-rate optimization for paid landing pages, retargeting and 1P-data activation, bid/budget management, kill/scale criteria, incrementality testing.
+
+Channels and disciplines deferred to a future version are tracked in [`roles/digital/TODO.md`](roles/digital/TODO.md).
 
 ## Install
 
@@ -48,29 +51,33 @@ git clone --depth 1 https://github.com/<your-username>/office-of-cmo.git ~/.clau
 cd ~/.claude/skills/office-of-cmo && ./setup
 ```
 
-`./setup` auto-detects your AI coding host (Claude Code, Codex, Cursor) and installs to the right location. Pass `--prefix` if you want commands namespaced (`/ocmo-ads-strategy` instead of `/ads-strategy`).
+`./setup` auto-detects your AI coding host (Claude Code, Codex, Cursor) and installs to the right location. Pass `--prefix` if you want commands namespaced (`/ocmo-cmo`, `/ocmo-digital`).
 
-After install, add an Office of CMO section to your project's `CLAUDE.md` listing the available skills (see [`CLAUDE.md`](CLAUDE.md) in this repo).
+## Memory
+
+Both `/cmo` and `/digital` read/write a shared memory layer at `cmo-memory/`:
+
+- `cmo-context.md` — base business profile (built by `/cmo` onboarding)
+- `icp.md` — ideal customer profile and segments
+- `voice.md` — brand voice + banned phrases + mandatories
+- `winners.md` — creatives/angles/audiences that repeatedly outperform
+- `kill-rules.md` — hard-learned shortcuts that beat default kill thresholds
+- `compliance-notes.md` — platform-specific learnings
+- `playbook.md` — patterns confirmed across multiple retros
+
+CRUD via `/cmo-memory`. Memory is intentionally short; if it doesn't compound, it doesn't go in.
 
 ## Philosophy
 
-See [`ETHOS.md`](ETHOS.md). Short version: most marketing software optimizes for "more dashboards." We optimize for **fewer, sharper decisions**. Every skill ends in an artifact a human can read in five minutes. Every artifact is a real input to the next phase. No skill produces a slide deck.
+See [`ETHOS.md`](ETHOS.md). Short version: most marketing software optimizes for "more dashboards." We optimize for **fewer, sharper decisions**, made by named specialists with skin in the game.
 
 ## Roadmap
 
-| Phase | Vertical | Status |
+| Version | Adds | Status |
 |---|---|---|
-| 1 | Ads | In progress |
-| 2 | Content & SEO | Planned |
-| 3 | Lifecycle (Email/CRM/Onboarding) | Planned |
-| 4 | Brand & Positioning | Planned |
-| 5 | Conversion (CRO) | Planned |
-| 6 | Analytics & Attribution | Planned |
-| 7 | Launches & GTM | Planned |
-| 8 | Growth Loops & Community | Planned |
-| 9 | Sales Alignment & RevOps | Planned |
-| 10 | Pricing & Packaging | Planned |
+| v0.2 | `/cmo` + `/digital` in depth; 5 stub roles; full Resolver | **Released** |
+| v0.3 | `/creative`, `/copy`, `/content`, `/analyst`, `/ops` in depth | Planned |
+| v0.4 | `/lifecycle`, `/brand`, `/product-marketer` (when scope expands beyond ad campaigns) | Planned |
+| v0.5+ | `/community`, `/influencer-manager`, `/partnerships`, `/pricing-strategist` | Future |
 
-## License
-
-MIT.
+Full roadmap: [`docs/ROADMAP.md`](docs/ROADMAP.md).

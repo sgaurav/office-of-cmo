@@ -1,176 +1,81 @@
 # Artifacts
 
-The contract between skills. Every skill reads from one or more artifact paths and writes to exactly one. Schemas are loose Markdown — the contract is the section names and required fields, not the prose around them.
+Roles write Markdown artifacts when a deliverable will be reread by a human. Artifacts are NOT a contract between roles (memory is) — they're outputs the user asked for.
 
-## Path conventions
+## When a role writes an artifact
+
+- The user explicitly asks ("draft a strategy doc", "give me a plan I can share with the board")
+- The conversation produces a decision document a human will reread (a quarterly retro, a pre-launch check)
+- The role is doing structured work where the artifact is the natural output (a creative brief, a measurement plan)
+
+When the user just wants a quick answer, roles answer in chat. They don't auto-write artifacts.
+
+## Default paths
 
 ```
 artifacts/
 └── ads/
-    ├── ads-strategy-doc.md
-    ├── audience-doc.md
-    ├── competitor-creative-report.md
-    ├── channel-plan.md
-    ├── budget-plan.md
-    ├── measurement-plan.md
-    ├── tagging-spec.md
-    ├── creative-briefs/
-    │   └── {campaign-slug}.md
-    ├── creative-decks/
-    │   └── {campaign-slug}.md
-    ├── landing-briefs/
-    │   └── {campaign-slug}.md
-    ├── pre-launch-checks/
-    │   └── {YYYY-MM-DD}.md
-    ├── platform-setup-log.md
-    ├── reviews/
-    │   └── {YYYY-MM-DD}-{daily|weekly|monthly}.md
-    ├── attribution-audit-{YYYY-MM}.md
-    ├── iterations/
-    │   └── {YYYY-MM-DD}.md
-    ├── retros/
-    │   └── {YYYY-MM | YYYY-Q#}.md
-    ├── compliance/
-    │   └── {YYYY-MM-DD}.md
-    └── playbook.md
+    ├── strategy-{YYYY-Q#}.md           # /digital or /cmo
+    ├── channel-plan-{YYYY-Q#}.md       # /digital
+    ├── budget-plan-{YYYY-MM}.md        # /digital
+    ├── briefs/{slug}.md                # /digital + /creative
+    ├── decks/{slug}.md                 # /creative + /copy
+    ├── landing-briefs/{slug}.md        # /digital
+    ├── pre-launch-{YYYY-MM-DD}.md      # /digital
+    ├── reviews/{YYYY-MM-DD}-{cadence}.md  # /digital + /analyst
+    ├── attribution-audit-{YYYY-MM}.md  # /analyst
+    ├── iterations/{YYYY-MM-DD}.md      # /digital
+    ├── retros/{period}.md              # /cmo
+    ├── compliance/{YYYY-MM-DD}.md      # /digital + /ops
+    └── playbook.md                     # appended by /cmo at retros
 ```
 
-`{campaign-slug}` is `kebab-case-3-to-5-words`, e.g., `q1-eng-vps-cold-meta`.
+## Artifact schemas
 
-## Strategy phase
+Schemas are intentionally **loose** — section headings are the contract, prose is free-form. Don't enforce rigid templates.
 
-### `ads-strategy-doc.md`
-**Written by:** `/ads-strategy`
-**Required sections:**
-- `# Ads Strategy — {Quarter | Date}`
+### `strategy-{period}.md` (written by `/cmo` or `/digital`)
+Required sections:
+- `# Strategy — {period}`
 - `## Primary Objective` (one of: Demand Capture / Demand Creation / Brand / Retention)
-- `## KPIs` (table: KPI | Type [leading/lagging] | Target | Source)
-- `## Budget Envelope` (monthly floor, ceiling, test/scale split)
-- `## Channel Mix Hypothesis` (table: Channel | Thesis | Expected % of spend)
-- `## Kill Criteria` (per channel, quantitative: spend threshold + time threshold + metric threshold)
-- `## Scale Criteria` (per channel)
-- `## Out of Scope` (channels we will NOT run, with one-line reason each)
+- `## KPIs` (with numbers)
+- `## Budget Envelope` (floor / ceiling / split)
+- `## Channel Mix` (with one-line theses)
+- `## Kill Criteria` (quantified, time-bounded)
+- `## Scale Criteria`
+- `## Out of Scope` (channels we explicitly will not run)
 
-### `audience-doc.md`
-**Written by:** `/ads-audience-research`
-**Required sections:**
-- `# Audience — {Date}`
-- `## Segments` (per segment: Profile, JTBD, Triggers, Objections, Watering Holes, Channel Fit)
-- `## Wedge Segment` (which segment to win first, why)
-- `## Message Angles` (per segment: Problem / Outcome / Identity)
+### `channel-plan-{period}.md` (written by `/digital`)
+Per channel: campaign types, audiences, bidding, account structure, naming, expected CPA range, test→scale gates, resource needs.
 
-### `competitor-creative-report.md`
-**Written by:** `/ads-competitor-scan`
-**Required sections:**
-- `# Competitor Creative Scan — {Date}`
-- `## Competitors Reviewed` (list)
-- `## Per-Competitor Playbook` (positioning, audience inferred, primary angles, formats)
-- `## Whitespace` (angles nobody is running)
-- `## Red Ocean` (angles everyone runs — avoid blandness)
+### `briefs/{slug}.md` (written by `/digital` + `/creative`)
+Audience, single-minded message, angle, format spec, mandatories, don'ts, inspiration, candidate hooks.
 
-## Plan phase
+### `reviews/{date}-{cadence}.md` (written by `/digital` or `/analyst`)
+TL;DR (3 lines), top 3 actions, spend pacing, KPI vs. plan, winners, losers, anomalies, memory updates.
 
-### `channel-plan.md`
-**Written by:** `/ads-channel-plan`
-**Required sections:**
-- `# Channel Plan — {Date}`
-- `## Channels` (per channel: Campaign Types, Audiences, Bid Strategy, Naming Convention, Account Structure, Expected CPA Range)
-- `## Test → Scale Gates` (per channel)
-- `## Channel Sequence` (which to start first, why)
-- `## Resource Needs` (creative count, copy variants, LP variants per channel)
+### `iterations/{date}.md` (written by `/digital`)
+Per ad-set: KILL/SCALE/REFRESH/HOLD with confidence, action, justification.
 
-### `budget-plan.md`
-**Written by:** `/ads-budget-plan`
-**Required sections:**
-- `# Budget Plan — {Month}`
-- `## Allocation` (table: Channel | Test $ | Scale $ | Total $ | % of Total)
-- `## Daily Floors` (per campaign, sized to avoid algorithm starvation)
-- `## Scaling Rules` (e.g., +20% every 3d when CAC < target × 0.8)
-- `## Kill Thresholds` (per channel, references strategy doc)
-- `## Reserve Buffer` (% held back for opportunistic tests)
+### `retros/{period}.md` (written by `/cmo`)
+Vs. strategy targets, what worked, what didn't, surprises, system fixes, memory updates, implications for next strategy.
 
-### `measurement-plan.md`
-**Written by:** `/ads-measurement-plan`
-**Required sections:**
-- `# Measurement Plan — {Date}`
-- `## Conversion Events` (primary, assist; with descriptions)
-- `## KPI Sources` (table: KPI | Source | Confidence)
-- `## UTM Scheme` (utm_source / utm_medium / utm_campaign / utm_content / utm_term, with examples)
-- `## Attribution Model` (chosen model, rationale)
-- `## Dashboards` (what's needed, where they live, review cadence)
-- `## Tracking Gaps` (things engineering needs to ship)
+### `compliance/{date}.md` (written by `/digital` or `/ops`)
+Platform policy review, claims substantiation, FTC/disclosure review, brand safety, verdict.
 
-### `tagging-spec.md`
-**Written by:** `/ads-measurement-plan`
-**Required sections:**
-- `# Tagging Spec — {Date}`
-- `## Pixels & Tags` (Meta CAPI, GA4, LinkedIn Insight, etc.)
-- `## Events to Fire` (event name, parameters, where it fires)
-- `## QA Steps` (how to validate live)
+### `attribution-audit-{month}.md` (written by `/analyst`)
+Per-channel reconciliation table, delta explanations, MER vs. claims, model recommendations, memory updates.
 
-## Create phase
+## Versioning
 
-### `creative-briefs/{slug}.md`
-**Written by:** `/ads-creative-brief`
-**Required sections:** Audience, Single-Minded Message, Angle, Format Spec, Mandatories, Don'ts, Inspiration References, Hook Prompts.
+Artifacts are checkpoints, not versioned files. If you replan a quarter, write a new strategy doc with the new period; don't edit the old one in place. The `cmo-memory/` layer is what carries forward; artifacts are snapshots.
 
-### `creative-decks/{slug}.md`
-**Written by:** `/ads-creative-generate`
-**Required sections:** Brief Reference, Hooks (8), Platform Copy (Meta/Google/LinkedIn), Visual Concepts (5–8), Concept Scoring, Ship List (top 3 + rationale).
+## Cleanup
 
-### `landing-briefs/{slug}.md`
-**Written by:** `/ads-landing-brief`
-**Required sections:** Hook Carry-Through, Hero (headline/subhead/CTA/visual), Above-the-Fold Proof, Section Sequence, Mobile Wireframe (ASCII), Tracking Events.
+Artifact files don't expire. After a year, you'll have a stack — that's fine. Use them as the cited inputs to next quarter's strategy doc and retros, then leave them.
 
-## Launch phase
+## What artifacts are NOT
 
-### `pre-launch-checks/{date}.md`
-**Written by:** `/ads-pre-launch-check`
-**Required sections:** Pixels & Tags PASS/FAIL, Conversions Firing PASS/FAIL, UTMs PASS/FAIL, Audiences PASS/FAIL, Exclusions PASS/FAIL, Budget/Schedule/Geo PASS/FAIL, Bid Strategy PASS/FAIL, Creative Naming PASS/FAIL, Brand Safety PASS/FAIL, Compliance Reference, Final GO/NO-GO with sign-off line.
-
-### `platform-setup-log.md`
-**Written by:** `/ads-platform-setup`
-**Required sections:** per platform, the exact settings applied (campaign type, audience, bid, schedule, budget, conversions chosen, exclusions, creative IDs).
-
-## Measure phase
-
-### `reviews/{date}-{cadence}.md`
-**Written by:** `/ads-performance-review`
-**Required sections:** Period, Spend vs. Plan, KPI Table (Actual vs. Target with delta), Winners (statistically meaningful), Losers, Anomalies, Top 3 Recommended Actions.
-
-### `attribution-audit-{YYYY-MM}.md`
-**Written by:** `/ads-attribution-audit`
-**Required sections:** Source Comparison Table (Platform vs. GA4 vs. Truth), Deltas Explained, Model Recommendation, Holdout/Incrementality Recommendation, MER Sanity Check.
-
-## Optimize phase
-
-### `iterations/{date}.md`
-**Written by:** `/ads-iterate`
-**Required sections:** Per Ad Set: Status (KILL/SCALE/REFRESH/HOLD) | Confidence (low/med/high) | Action (with budget step or refresh trigger) | Justification (cites metric thresholds).
-
-## Reflect phase
-
-### `retros/{period}.md`
-**Written by:** `/ads-retro`
-**Required sections:** Period, What Worked (top 3 each: creatives, audiences, angles), What Didn't (with root cause), Surprises, System Fixes, Memory Updates Applied, Playbook Entries Added.
-
-### `playbook.md`
-**Appended by:** `/ads-retro`
-**Required structure:** chronological list of validated patterns, each with: pattern name, evidence (which retro confirmed it), conditions (when it applies), counter-evidence (when not).
-
-## Utility
-
-### `compliance/{date}.md`
-**Written by:** `/ads-compliance-check`
-**Required sections:** Platform Policy Review, Claims Substantiation, FTC/Disclosure Review, Brand Safety, Verdict (PASS / WARNINGS / BLOCKERS).
-
-## Memory artifacts
-
-Stored under `cmo-memory/` (or `OCMO_MEMORY_DIR`). Not vertical-specific:
-
-- `cmo-context.md` — base profile (business type, stage, ICP summary, voice, platforms)
-- `icp.md` — full ICP with segments
-- `voice.md` — brand voice + banned phrases + mandatories
-- `winners.md` — repeatedly outperforming creatives/angles/audiences
-- `kill-rules.md` — patterns to kill faster than the strategy doc would
-- `compliance-notes.md` — platform-specific learnings
+- Not a hand-off contract between roles (memory is)
+- Not the only output of a role (most conversations don't produce artifacts)
+- Not auto-generated; roles only write them when asked or when the conversation naturally ends in a deliverable
