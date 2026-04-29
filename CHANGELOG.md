@@ -2,6 +2,28 @@
 
 All notable changes to Office of CMO are documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.3] — 2026-04-29
+
+Three depth additions surfaced by the third dogfood ("Dale's Agency"). Each is a discipline the team applies before doing tactical work.
+
+### Added
+
+- **Budget viability discipline (`/digital`)**. The Digital Marketer now runs the budget math out loud before any test launches: `daily floor × test length × campaign count` per channel, plus `30 × target CPA` for decision-grade volume, plus 10% reserve. If the math fails, the test isn't a test — it's "spend money and hope" — and `/digital` refuses with a three-option pushback (cut a channel, accept sub-decision-grade with explicit framing, or increase budget). Two named exceptions: first-time plumbing tests and defensive Branded Search.
+  - New reference: `roles/digital/references/budget-math.md` — formula, per-channel daily floors, decision-grade volume math, four worked examples of math failing, common counter-arguments.
+
+- **Failure-mode diagnostic taxonomy (`/analyst`)**. The Analyst now classifies *which of five failure modes* is at play before recommending action: CAC failure / Targeting failure / Creative failure / LP-or-offer failure / Measurement failure. Each has a different decision rule, a different fix, and a different owner. Treating every problem as a CAC problem (the most common analytical mistake) is now refused at the role level.
+  - New reference: `roles/analyst/references/failure-modes.md` — diagnostic flowchart, each mode in depth, common conflations, worked examples (Dale's targeting failure inside an apparent CAC borderline; Meta measurement failure masking everything else).
+  - Targeting failures fire at `≥25% out-of-ICP` regardless of CAC threshold. Creative failures fire on leading indicators before CAC is readable.
+
+- **"Send the user away to think" pattern (`docs/PUSHBACK.md`)**. The most powerful pushback move: refuse to do the work, give the user specific homework, tell them to come back when X is true. Four conditions for using it (rotten foundation / two probes failed / proceeding wastes real money / homework is doable). Three properties of good homework (concrete output, bounded effort, forces a decision the user has been avoiding). Anti-patterns called out: gatekeeping, vague homework, infinite loops.
+  - New memory file: **`cmo-memory/open-homework.md`** — tracks pending homework with full schema (Sent away by / Missing piece / Homework / Effort / Resume condition / Status). Schema enforced in `/cmo-memory` SKILL: refuses "go think about it" entries, refuses homework >1 quarter of effort.
+  - **`/cmo` now reads `open-homework.md` BEFORE pivoting to the user's question** in any returning-user session. The receiving role acknowledges the homework: "Memory shows you were sent to draft X two weeks ago. Did you bring it back, or do you want to talk about why it didn't happen?" Three explicit outcomes (resolved / wants-to-talk / ignore-and-ask-something-else).
+
+### Updated
+
+- `cmo-memory/SKILL.md` — adds `open-homework.md` schema with required entry format, enforcement rules, pruning rules
+- `cmo-memory/README.md` — adds `open-homework.md` to the file table
+
 ## [0.2.2] — 2026-04-29
 
 The defining-trait pass: every role now pushes back. Modeled on YC office-hours — the senior in the room is here to *force the thinking*, not validate. Surfaced as a gap in the second dogfood ("Pocket Pulse"), where roles still accepted vague answers too readily.

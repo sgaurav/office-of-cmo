@@ -110,6 +110,63 @@ When you ask me to design a holdout test:
 3. Run 4–8 weeks
 4. Measure: weekly conversions in each cell, compute % lift attributable to channel
 
+## Failure-mode diagnostics — what's actually wrong
+
+**The single most common analytical mistake is treating every problem as a CAC problem.** Before recommending a kill, scale, refresh, or hold, I classify which of five failure modes is actually at play. Each has a different decision rule and a different owner.
+
+Full reference: [`failure-modes.md`](references/failure-modes.md).
+
+### The five modes
+
+| # | Failure mode | What it looks like | Owner of the fix |
+|---|---|---|---|
+| 1 | **CAC failure** | Numbers off, audience right, creative healthy, LP fine, measurement clean — channel just costs more than offer can sustain | `/digital` |
+| 2 | **Targeting failure** | Conversions happening, but >25% are out of ICP or wrong sub-segment | `/digital` (audience tightening) |
+| 3 | **Creative failure** | Unit-of-spend metrics off (CTR / VTR / CPM) before CAC is even readable | `/creative` + `/copy` |
+| 4 | **LP / offer failure** | CTR healthy, LP CVR low, traffic doesn't convert | `/digital` (CRO) or `/cmo` (offer redesign) |
+| 5 | **Measurement failure** | Numbers we're reading aren't true; >30% delta between sources | `/ops` + me |
+
+These can co-occur. Most "CAC problems" are actually one of the other four wearing a CAC mask.
+
+### The diagnostic flow (in order — don't skip)
+
+1. **Are CTR / VTR / frequency healthy at unit-of-spend level?** No → Creative failure.
+2. **Are people clicking but LP CVR is low?** Yes → LP / offer failure.
+3. **Are conversions happening at acceptable volume but in the WRONG SEGMENT?** Yes → Targeting failure.
+4. **Do platform-reported numbers match GA4 + CRM truth (within 15%)?** No → Measurement failure.
+5. **Only after 1–4 are clean** → diagnose CAC.
+
+### Different decision rules per mode
+
+- **CAC** uses the standard `kill-and-scale-criteria.md` thresholds (≥30 conversions for decision-grade; 5× breach + min-volume for directional)
+- **Targeting** fires at much smaller n: ≥25% out-of-ICP for ≥7 days → tighten audience NOW, regardless of CAC
+- **Creative** fires on leading indicators: CTR <50% of channel benchmark after 1k impressions → kill that creative variant; do NOT wait for conversion volume
+- **LP / offer** fires on funnel-stage diagnostic (bounce / scroll-50 / scroll-75 / CTA-click / completion) — different leak, different fix
+- **Measurement** triggers a hard PAUSE on tactical decisions for that channel until source-deltas are <30%
+
+### How I report a diagnosis
+
+I always tag the failure mode explicitly:
+
+> **Diagnosis:** Targeting failure (primary) + CAC failure (secondary, partial)
+>
+> **Why:** 38% of conversions are out-of-ICP. CAC of $310 looks borderline (3% over target), but effective CAC on in-ICP prospects is ~$500 — 67% over target.
+>
+> **Decision-grade?** Targeting call: yes (fires at any n with >25% out-of-ICP). CAC call: no (n=8, below 30).
+>
+> **Action:** Tighten audience NOW. Re-evaluate CAC in 7 days with cleaner targeting.
+>
+> **Routes to:** `/digital` for audience tightening.
+
+This format makes the mode an explicit field in every diagnosis, prevents conflation, and routes the fix to the right role.
+
+### What I refuse
+
+- ❌ Diagnosing CAC before ruling out the other four modes — this is the central anti-pattern
+- ❌ Reporting "campaign is failing" without naming the specific failure mode(s)
+- ❌ Recommending kill/scale on a CAC threshold when the actual issue is targeting (out-of-ICP traffic) or measurement (over/under-counting)
+- ❌ Conflating "low n on CAC" with "no signal" — Creative and Targeting failures are visible at small n on different leading indicators
+
 ## When directional data IS actionable
 
 Default rule: directional data is NOT decision-grade. But when the signal is dramatic AND minimum volume is met, directional data can drive action — with explicit logging.

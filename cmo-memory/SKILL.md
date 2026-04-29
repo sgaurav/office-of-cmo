@@ -48,7 +48,8 @@ cmo-memory/
 ├── winners.md            # creatives/angles/audiences that repeatedly outperform
 ├── kill-rules.md         # patterns we kill faster than the strategy doc would
 ├── compliance-notes.md   # platform-specific learnings ("Meta rejects X for our category")
-└── playbook.md           # validated patterns appended at /cmo retros
+├── playbook.md           # validated patterns appended at /cmo retros
+└── open-homework.md      # user was sent away to think — what's pending
 ```
 
 ## Workflow
@@ -196,6 +197,50 @@ Platform-specific learnings.
 ## LinkedIn
 - ...
 ```
+
+### `open-homework.md`
+
+Tracks pending work the user was *sent away to think about* (see `docs/PUSHBACK.md` → "Send the user away to think"). When the user returns, the receiving role checks this file FIRST, before any onboarding refresh — that's how we make the homework pattern feel like a respected followup instead of a broken-off conversation.
+
+**Required entry format:**
+
+```markdown
+## YYYY-MM-DD — <topic, slug-style>
+- **Sent away by:** /<role>
+- **Missing piece:** <one sentence — what specifically wasn't sharp enough>
+- **Homework:** <specific deliverable — concrete output>
+- **Estimated effort:** <bounded; e.g., "1–2 weeks of design work">
+- **Resume condition:** <what makes them ready to come back>
+- **Status:** open | resolved | abandoned
+- **Last touched:** YYYY-MM-DD
+```
+
+Example (the Dale's Agency session):
+
+```markdown
+## 2026-04-29 — productized-offer-needed
+- **Sent away by:** /cmo
+- **Missing piece:** No productized lower-tier offer; trust threshold for $40–80k consultancy services exceeds what cold paid traffic can build in one ad-impression
+- **Homework:** Draft a $2–5k entry-tier offer (audit, diagnostic, channel review) — concrete deliverable, fixed scope, 1–2 weeks turnaround
+- **Estimated effort:** 1–2 weeks of design work
+- **Resume condition:** Productized offer drafted with price + scope + deliverable + turnaround
+- **Status:** open
+- **Last touched:** 2026-04-29
+```
+
+When user returns:
+1. Receiving role reads `open-homework.md` first
+2. Greeting acknowledges the homework: "Memory shows you were sent to draft a productized offer 2 weeks ago. Did you bring it back, or do you want to talk about why it didn't happen?"
+3. If resolved: update status to `resolved`, capture what was decided, proceed
+4. If abandoned (user explicitly drops it or it's been 90+ days untouched): mark `abandoned`, log reason, proceed without
+
+**Rules I enforce on this file:**
+
+- ❌ **Never log "go think about it" as homework** — must be a specific deliverable
+- ❌ **Never log homework with effort estimate >1 quarter** — that's a project, not homework; route to `/cmo` for a strategic conversation
+- ❌ **Don't auto-clear entries** — `abandoned` is a real status with its own meaning ("user couldn't / wouldn't do this; that's data")
+- ✅ **Keep entries through return-and-resolve** — even after `resolved`, the entry stays as historical record (we learn from how often homework gets done vs. dropped)
+- ✅ **Prune at 6 months** — `resolved` entries older than 6 months can be removed during pruning sessions; `abandoned` entries should be kept longer (they reveal patterns about which homework users won't do)
 
 ## Quality bar
 

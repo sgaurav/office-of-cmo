@@ -11,6 +11,7 @@ Persistent state across Office of CMO sessions. Roles read from these files firs
 | `kill-rules.md` | `/digital`, `/cmo` retros | Hard-learned kill thresholds |
 | `compliance-notes.md` | `/digital`, `/analyst`, `/ops` | Platform-specific learnings |
 | `playbook.md` | `/cmo` retros | Validated patterns (≥2 retros confirm) |
+| `open-homework.md` | any role that sends user away | Pending homework when user was told "come back when X is true" — see `docs/PUSHBACK.md` |
 
 All roles can read; the writer column is who typically appends. CRUD via `/cmo-memory`. Do not edit by hand if you can avoid it — roles assume the schemas in `/cmo-memory`'s SKILL.md are intact.
 
