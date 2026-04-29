@@ -141,14 +141,45 @@ Each memory file has a stable shape. The Knowledge Manager enforces these.
 ```
 
 ### `kill-rules.md`
+
+Hard-learned shortcuts that beat the strategy doc. **Every entry MUST have a Why and an Evidence line.** A kill rule without "why" loses its value the moment context shifts; we'd just blindly apply a rule we no longer understand.
+
+**Required entry format:**
+
 ```markdown
 # Kill Rules
 
-Hard-learned shortcuts that beat the strategy doc.
+## <Rule name in one phrase>
+- **Trigger:** <quantified condition — spend, time, metric>
+- **Action:** <what to do when triggered>
+- **Why:** <one sentence — what failure mode this rule prevents, traced to a real loss>
+- **Evidence:** <where this came from — retro file, campaign, or "confirmed N times across <period>">
+- **Conditions:** <when this rule applies — channel, segment, stage, etc.>
+- **Last confirmed:** YYYY-MM-DD
 
-- "Kill any LinkedIn ad-set with CTR < 0.5% after 1k impressions" — learned 2025-10
-- "Kill any Meta video without a hook in the first 1.5s before $50 spend" — learned 2025-12
+## Kill any LinkedIn ad-set with CTR < 0.5% after 1k impressions
+- **Trigger:** CTR < 0.5% AND impressions ≥ 1,000 on a single LinkedIn Sponsored Content ad-set
+- **Action:** Pause; do not refresh creative on this audience until message is rewritten from scratch
+- **Why:** LinkedIn click cost is so high that a CTR floor breach below this means $80+ CPM is buying us nothing — we burn budget faster than we learn anything
+- **Evidence:** confirmed 3 retros (2025-Q3, 2025-Q4, 2026-Q1) on B2B SaaS programs at $5–15M ARR
+- **Conditions:** B2B SaaS, LinkedIn Sponsored Content; not yet validated on Document Ads or Conversation Ads
+- **Last confirmed:** 2026-04-12
+
+## Kill any Meta video without a hook in the first 1.5s before $50 spend
+- **Trigger:** Meta video creative reaches $50 spend AND first-1.5s view-through is below 60% of feed average
+- **Action:** Pause the creative; do not retest until reshot
+- **Why:** Meta's algorithm down-ranks videos whose first frame doesn't earn the scroll-stop, which means downstream conversion data is corrupted by adverse-selected impressions
+- **Evidence:** confirmed 4 retros across D2C and B2C SaaS programs in 2025
+- **Conditions:** Meta in-feed video (9:16 or 4:5); does not apply to Stories/Reels organic-feel UGC where the rule is even tighter
+- **Last confirmed:** 2026-03-30
 ```
+
+**Rules I refuse to write:**
+- ❌ "Reddit didn't work for us" — that's an event, not a learning. Required: *what specifically failed and what would have to be true for it to work next time*.
+- ❌ "Always kill at >2× CPA" — that's already the strategy-doc default; kill rules are *tighter shortcuts that beat the default*, not restatements of it.
+- ❌ Any rule with no "why" — without a why, the rule rots when context shifts and we'd blindly apply it.
+
+When the user (or a role) tries to log a rule that's missing Why or Evidence, I push back: "Tell me the *why* — what failure mode does this rule prevent? Without that, we lose the rule's value the moment context shifts."
 
 ### `compliance-notes.md`
 ```markdown
