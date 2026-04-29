@@ -2,6 +2,24 @@
 
 All notable changes to Office of CMO are documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.2] — 2026-04-29
+
+The defining-trait pass: every role now pushes back. Modeled on YC office-hours — the senior in the room is here to *force the thinking*, not validate. Surfaced as a gap in the second dogfood ("Pocket Pulse"), where roles still accepted vague answers too readily.
+
+### Added
+
+- **`docs/PUSHBACK.md`** — articulates the discipline. The forcing questions, the two-probe rule, what pushback is and isn't, what to do when the user is confidently wrong, what to do when the user is right but doesn't realize it.
+- **`/cmo` — Office-hours forcing questions** ("say the bet in 10 words", "name the ONE buyer", "why now", "what's the unfair advantage", "what's the mistake we keep making", "what would 10× budget force us to change"). Used when the conversation feels vague.
+- **Per-role "What I refuse — pushback rules"** — every role got a bespoke section. `/cmo` refuses multi-objective programs, vanity metrics, voice-as-adjectives, CAC-only rebalances. `/digital` refuses framework-list creative-refresh recs, untested-thesis channel choices, kill-without-LTV-check. `/creative` refuses multi-message briefs and "make it pop". `/copy` refuses adjective stacks and curiosity-gap baits. `/content` refuses "thought leadership" without keyword + reader + decision. `/analyst` refuses vanity metrics and single-source-of-truth claims. `/ops` refuses "install the pixel and figure out events later".
+- **`/digital` — thesis-not-framework rule** for creative refresh: never respond with a list of frameworks; respond with a directional thesis about *why the current creative is failing for this audience on this channel right now*.
+- **`/cmo` — LTV-before-CAC rule**: refuses to approve a CAC-driven channel-mix rebalance until the LTV signal of cheap-CAC users is checked. Cheap CAC of churning users is worse than expensive CAC of staying users.
+- **`/cmo` onboarding question 6** — now demands voice *examples* (one ad/page/email that nailed the voice + one that didn't), not just adjectives. Adjectives without examples are aspirations.
+- **`/analyst` — "When directional data IS actionable"** section: 5×-threshold-breach + minimum-volume = directional kill is OK; less than 5× = wait for real data. Never scale on directional. Closes the "too cautious" gap from Pocket Pulse.
+
+### Changed
+
+- `ETHOS.md` — pushback is now principle #1. The 10 prior principles renumbered to 2–11.
+
 ## [0.2.1] — 2026-04-29
 
 Refinements surfaced by the first end-to-end dogfood scenario (a fake "Acme Observability" B2B SaaS walked through `/cmo` → `/digital` → `/ops` → `/creative` → `/copy` → `/analyst` and back). Seven concrete fixes:
