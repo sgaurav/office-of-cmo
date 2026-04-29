@@ -2,6 +2,29 @@
 
 All notable changes to Office of CMO are documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.3.0] — 2026-04-29
+
+`/creative` graduates from stub to full depth. The Creative Director can now run real creative briefing, fan-out concepts across an angle, score against the rubric, ship to `/copy` and `/digital`, and refresh decaying creative without re-asking strategic questions.
+
+### Changed
+
+- **`/creative`** — full persona; no longer a stub. Frontmatter `preamble-tier: 1`, `version: 1.0.0`, `status: stub` removed. Owns: briefs, art direction, hook prompts, visual exploration, format-fit, concept fan-out, scoring, refresh briefs. Pushback rules tightened (10 explicit refusals). Three named workflows: brief writing, concept fan-out, refresh.
+
+### Added — `roles/creative/references/`
+
+- **`creative-brief-template.md`** — the standard brief format. Full template, per-section guidance ("how to fill each section"), anti-patterns, length discipline ("one page, scannable in 2 minutes").
+- **`concept-fan-out-patterns.md`** — how to spread 3–5 concepts across an angle without producing hook variants. Five fan-out patterns (Subject ↔ No-Subject, Hero ↔ Proof, Slow Build ↔ Hook-First, Conformist ↔ Contrarian, Production-Tier spread). The four-axis spread (Subject × Treatment × Pacing × Proof). The stretch-concept rule.
+- **`format-fit-by-channel.md`** — audience-state taxonomy (vertical-feed scroll / in-feed / searching / educational / pre-roll / subreddit-native / DM / retargeting) × per-channel matrix (Meta, TikTok, LinkedIn, YouTube, Google, Reddit, X, Bing). Production-tier ↔ channel matrix. Quick decision shortcut.
+- **`concept-critique-rubric.md`** — the four-dimension rubric (Relevance / Hook strength / Differentiation / Production feasibility), 1–5 each, total /20. Worked example. Cut/ship thresholds. When to override the rubric.
+- **`art-direction-patterns.md`** — visual prompt patterns by angle (Outcome / Problem / Identity / Status flip / Comparison / Curiosity / Stat-led / Contrarian). Per-tool quirks (Midjourney / Flux / DALL-E / Veo / Runway / Pika / Firefly). When to skip the renderer.
+
+### Updated
+
+- `CLAUDE.md` — `/creative` now listed as **In depth** in the role registry
+- `docs/ROLES.md` — full persona summary for `/creative`
+- `.claude-plugin/plugin.json` — version 0.3.0
+- `README.md` — `/creative` marked Full
+
 ## [0.2.4] — 2026-04-29
 
 Six refinements surfaced by the Reema dogfood (multi-channel sub-decision-grade test designed to break v0.2.3). Each is a discipline already present that needed sharper expression or wider application.

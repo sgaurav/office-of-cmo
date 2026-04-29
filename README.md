@@ -14,7 +14,7 @@ Office of CMO is a skill pack for [Claude Code](https://docs.claude.com/en/docs/
 |---|---|---|
 | `/cmo` | CMO — strategic owner, entry-point router | **Full** |
 | `/digital` | Digital Marketer — paid acquisition end-to-end | **Full** |
-| `/creative` | Creative Director | Stub |
+| `/creative` | Creative Director — briefs, hooks, concepts, art direction | **Full** |
 | `/copy` | Copywriter | Stub |
 | `/content` | Content Marketer | Stub |
 | `/analyst` | Marketing Analyst | Stub |
