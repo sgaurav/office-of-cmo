@@ -2,6 +2,28 @@
 
 All notable changes to Office of CMO are documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.4] — 2026-04-29
+
+Six refinements surfaced by the Reema dogfood (multi-channel sub-decision-grade test designed to break v0.2.3). Each is a discipline already present that needed sharper expression or wider application.
+
+### Added — `/digital`
+
+- **Complexity-escalation exception to the two-probe rule.** When the user's override doesn't just spend more money but *structurally compounds risk* (≥4 channels simultaneously, ≥3 new pixel installations, mixed test/scale phases, accepted measurement gaps), `/digital` takes a third probe — naming the compound problem and offering "stage the launch" or "accept we may not be able to diagnose specific failures." Then accepts and proceeds. Two-probe rule isn't infinite, but qualitatively-different risk earns one extra sharpening turn.
+- **Conflation pushback template.** When the user demands a blanket action across multiple failing channels ("kill them all", "scale everything that's working"), `/digital` now uses a reusable response template: name each channel's failure mode separately, state the cost of conflation ("we lose lessons that took 3 weeks of spend to generate"), exit with a per-channel action plan rather than a single verb. Three explicit cases for when the conflation pushback should NOT fire (diagnoses really do all match; user's blanket call is strategic not tactical; after two probes).
+
+### Added — `/analyst`
+
+- **Always read `/ops`-flagged risks first.** Before diagnosing a channel, `/analyst` greps `cmo-memory/compliance-notes.md` and `cmo-memory/open-homework.md` for risks `/ops` flagged at launch that the user accepted. When found, the diagnosis leads with that risk: "Before tactical analysis: `/ops` flagged at Day 0 that LinkedIn Conversions API was skipped. Platform-vs-CRM delta is now +300% — this is the failure mode that gap predicts." Prevents the team from re-deriving foreseen problems from the data.
+
+### Added — `/cmo`
+
+- **Incident retro mode.** A separate retro shape from quarterly retros, fired by specific triggers: a flagged risk materially broke the program, a kill rule should have fired earlier, two consecutive reviews surfaced the same root cause with no system change, measurement gap discovered mid-program, or user explicitly asks "why didn't we catch this earlier." Tighter format than quarterly retros (single incident, ≤6 sections), always written, single-incident-shaped lessons logged to `kill-rules.md` and (after second occurrence) `playbook.md`. Explicit anti-patterns: not blame allocation, not re-litigating original decisions, not quarterly retros in disguise.
+- **Sunk-cost discipline in strategic resets.** When a reset removes ≥30% of program spend or invalidates 3+ weeks of effort, `/cmo` names the cost explicitly before setting the next strategy. Four-part frame: $ spent that we now know was wrong-shaped; weeks of runway burned; what we learned worth the cost; what we'd refund if we could. This last list often becomes new entries in `kill-rules.md`. Prevents the next strategy from being silently more aggressive than the user realizes.
+
+### Added — `docs/PUSHBACK.md`
+
+- **Common substitute homework anti-pattern.** A 9-row table of homework users were sent to do vs. the substitutes they offer in place ("5 customer conversations" → "I analyzed our usage data"; "productize one offering" → "I have a few different things"; "talk to lost-deal prospects" → "I read their objection emails"). Each substitute has a specific tell explaining why it's non-equivalent in the way that matters. The handshake when a substitute appears: acknowledge the work, name the difference, ask if real homework is doable OR identify the actual blocker, redesign if blocked OR accept override with logged risk. Critical insight: substitute attempts usually point to a real blocker (discomfort, not knowing how, fear of asking) — the redesign tightens the homework to address that blocker, not lower the bar.
+
 ## [0.2.3] — 2026-04-29
 
 Three depth additions surfaced by the third dogfood ("Dale's Agency"). Each is a discipline the team applies before doing tactical work.

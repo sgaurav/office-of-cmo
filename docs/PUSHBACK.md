@@ -165,6 +165,47 @@ What this is NOT:
 - ❌ **Sending away when a smaller version of the work would ship.** If we can get to a useful artifact in this session, we should — even if the user's bet is half-formed. Homework is for foundation problems, not work-sharpening problems.
 - ❌ **Sending the user away because we don't know the answer.** Pushback isn't a way for the role to dodge complexity. If the role doesn't know how to do something, they say so directly and route to a peer or escalate.
 
+### Common substitute homework — what users offer instead, and why each is non-equivalent
+
+The single most common failure of the send-away pattern: the user returns with **adjacent work that feels like the homework but isn't**. They've spent real effort, they're proud of it, they've come back. Refusing the substitute feels harsh — but accepting it lets the user run the same broken hypothesis with more confidence than before.
+
+The receiving role recognizes these patterns and pushes back. Each substitute has a specific tell — what makes it *feel* equivalent, and what makes it actually different.
+
+| Homework asked for | Substitute users offer | Why it's not equivalent |
+|---|---|---|
+| **5 customer conversations to find the recurring word** | "I analyzed 50 onboarding sessions / our help-doc search queries / our usage analytics" | Behavior data captures what users *did*; conversations capture what they were *trying to do*, what they *tried first*, and the *language* they use unprompted. Substitute is the user's own language reflected back, not the customer's. |
+| **Talk to 3 lost-deal prospects about why they didn't buy** | "I sent them a survey / I read their objection emails / sales told me their reason" | Sales-reported objections are the polished version. Surveys are filtered through what the user thought you wanted to hear. Real loss reasons surface in conversation when they trust you don't have an agenda. |
+| **Productize one offering with concrete scope and price** | "I have a few different things we could offer / I sketched some bullet points / I have a pricing page" | A productized offer has a *fixed* deliverable, *fixed* scope, *fixed* price, *fixed* turnaround. "A few different things" is still services consulting in disguise — paid traffic can't convert it. |
+| **Find the recurring word from customer conversations** | "I came up with a word that I think captures it" | A word *you* came up with reflects your model. The recurring word from conversations is evidence-derived. The difference shows up the first time you put it in a hook and watch how it lands. |
+| **Quantify outbound's actual reply rate / conversion rate / CAC equivalent** | "Outbound feels like it's working / a few replies came in / our pipeline is healthy" | "Feels" isn't a number. The exercise is to find the leak; without numbers there's no leak to find, just vibes. |
+| **Define what "winning" looks like in numbers** | "Winning is when we hit our goals / when the team feels good / when investors are impressed" | Self-referential definitions can't be falsified. The whole point is to write something specific enough that you can be *wrong* about it. |
+| **Talk to 3 customers about their willingness-to-pay** | "I looked at competitor pricing / our analytics show power users / sales said the deals are landing fine" | Competitor pricing assumes you're a substitute, not a different category. Power users are price-insensitive by definition. Sales-landed deals are a survivorship bias. WTP conversation surfaces the price *that didn't almost-kill the deal*. |
+| **Choose one primary objective and commit to it** | "All four are important; let me weight them 40/30/20/10" | Weighting isn't choosing. The whole point of single-objective is committing to "we will give up <other three> to win <chosen one>." If you've kept all four, you haven't chosen. |
+| **Test paid landing pages with real traffic against a control** | "I had three friends look at the LP / I A/B-tested copy in my head / our designer thinks it's fine" | Friends are not the audience. Mental A/B tests have 100% confirmation bias. Designer feedback is design feedback, not conversion feedback. Real traffic is not negotiable. |
+
+**The handshake when a substitute appears**:
+
+1. **Acknowledge the work was real**. The user did something hard. Don't erase that.
+2. **Name the specific tell** — what makes the substitute non-equivalent in the way that matters here.
+3. **Ask whether the original homework is still doable** OR identify the actual blocker.
+4. **Redesign if there's a real blocker**, accept the substitute (with risk logged) if the user explicitly overrides.
+
+Example response (template):
+
+> "I hear you did the work. Two weeks of analytics review is real effort. But: <name the specific difference between substitute and ask>. The reason it matters here is <connect to the decision the homework is for>.
+>
+> Three options:
+>
+> 1. **Do the homework I actually asked for.** Same homework, more time. <Specific re-design if needed.>
+> 2. **Tell me why you're not going to.** If there's a real blocker (you tried, it didn't work; you can't get the calls; you're scared) — let's solve that one. Substitutes usually point to a real blocker.
+> 3. **Override me.** Resume the work using your substitute as the foundation, with the risk logged that the foundation is data-derived not conversation-derived. Riskier but your call.
+>
+> Which?"
+
+**The redesign move is the most underused.** When user offers a substitute, the substitute usually reveals the real blocker — discomfort scheduling calls, fear of asking customers for time, not knowing how to phrase the ask. The redesign tightens the homework to address that blocker, not to lower the bar.
+
+Example: original homework was "5 × 30-min customer conversations." User returns with analytics. Real blocker (when probed): "felt awkward asking paying customers for 30 min." Redesign: "Send 10 customers an outreach with bundle/offer/warm-intro framing. Get 5 conversations. Find the recurring word." Same outcome demanded; the awkwardness blocker addressed.
+
 ### A worked example (from a real session — Dale's Agency)
 
 User came in with: "I want to run paid ads to get more SaaS founders to hire us."
